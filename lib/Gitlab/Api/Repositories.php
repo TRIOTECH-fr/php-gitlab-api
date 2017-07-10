@@ -253,8 +253,7 @@ class Repositories extends AbstractApi
      */
     public function getFile($project_id, $file_path, $ref)
     {
-        return $this->get($this->getProjectPath($project_id, 'repository/files'), array(
-            'file_path' => $file_path,
+        return $this->get($this->getProjectPath($project_id, 'repository/files/'.$this->encodePath($file_path)), array(
             'ref' => $ref
         ));
     }
@@ -272,8 +271,7 @@ class Repositories extends AbstractApi
      */
     public function createFile($project_id, $file_path, $content, $branch_name, $commit_message, $encoding = null, $author_email = null, $author_name = null)
     {
-        return $this->post($this->getProjectPath($project_id, 'repository/files'), array(
-            'file_path' => $file_path,
+        return $this->post($this->getProjectPath($project_id, 'repository/files/'.$this->encodePath($file_path)), array(
             'branch_name' => $branch_name,
             'content' => $content,
             'commit_message' => $commit_message,
@@ -296,8 +294,7 @@ class Repositories extends AbstractApi
      */
     public function updateFile($project_id, $file_path, $content, $branch_name, $commit_message, $encoding = null, $author_email = null, $author_name = null)
     {
-        return $this->put($this->getProjectPath($project_id, 'repository/files'), array(
-            'file_path' => $file_path,
+        return $this->put($this->getProjectPath($project_id, 'repository/files/'.$this->encodePath($file_path)), array(
             'branch_name' => $branch_name,
             'content' => $content,
             'commit_message' => $commit_message,
@@ -318,8 +315,7 @@ class Repositories extends AbstractApi
      */
     public function deleteFile($project_id, $file_path, $branch_name, $commit_message, $author_email = null, $author_name = null)
     {
-        return $this->delete($this->getProjectPath($project_id, 'repository/files'), array(
-            'file_path' => $file_path,
+        return $this->delete($this->getProjectPath($project_id, 'repository/files/'.$this->encodePath($file_path)), array(
             'branch_name' => $branch_name,
             'commit_message' => $commit_message,
             'author_email' => $author_email,

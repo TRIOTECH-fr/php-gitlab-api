@@ -23,7 +23,8 @@ class Groups extends AbstractApi
      */
     public function search($query, $page = 1, $per_page = self::PER_PAGE)
     {
-        return $this->get('groups?search='.$this->encodePath($query), array(
+        return $this->get('groups', array(
+            'search' => $this->encodePath($query),
             'page' => $page,
             'per_page' => $per_page
         ));
